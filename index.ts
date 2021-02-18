@@ -7,13 +7,21 @@ import { UserType } from './src/models/UserType';
 
 
 const userRepository =new UserRepository();
-const newUser = {id:1,name:"admin",username:"admin",password:"admin",userType:UserType.ADMIN}
+const newUser = {id:1,name:"admin",username:"admin",password:"admin",userType:UserType.ADMIN};
+const newUser2 = {id:1,name:"EMPLOYEE",username:"EMPLOYEE",password:"EMPLOYEE",userType:UserType.EMPLOYEE};
+const newUser3 = {id:1,name:"CUSTOMER",username:"CUSTOMER",password:"CUSTOMER",userType:UserType.CUSTOMER};
+
 userRepository.create(newUser);
+userRepository.create(newUser2);
+userRepository.create(newUser3);
+
 newUser.name="güncellenmiş";
 newUser.userType=UserType.CUSTOMER;
-userRepository.update(newUser);
+//userRepository.update(newUser);
 
-console.log(userRepository.getAll());
+//userRepository.deletee(newUser3);
+
+console.log(userRepository.get(0));
 
 
 
