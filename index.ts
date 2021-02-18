@@ -10,6 +10,7 @@ import { CartRepository } from './src/repository/CartRepository';
 import { OrderRepository } from './src/repository/OrderRepository';
 import { CartItem } from './src/models/CartItem';
 import { CartService } from './src/Services/CartService';
+import { OrderService } from './src/Services/OrderService';
 // Write TypeScript code!
 
 
@@ -23,6 +24,7 @@ const cartRepository=new CartRepository();
 const orderRepository =new OrderRepository();
 
 const cartService = new CartService(cartRepository,productRepository);
+const orderService = new OrderService(orderRepository);
 
 const newUser = {id:1,name:"admin",username:"admin",password:"admin",userType:UserType.ADMIN};
 
@@ -38,9 +40,19 @@ const crt1={id:0,product:prd,amount:20}
 const crt2={product:prd2,amount:20}
 const crt3={product:prd3,amount:20}
 
+
+orderService.addProductToOrder(newUser,prd,10000);
+orderService.addProductToOrder(newUser,prd,1000);
+orderService.addProductToOrder(newUser,prd2,10000);
+
+
+
+console.log(orderService.getAllOrder()[0].cart);
+/*
 cartService.addProductToCart(prd,20);
 cartService.addProductToCart(prd2,20);
-cartService.addProductToCart(prd3,20);
+cartService.addProductToCart(prd3,50);
+cartService.addProductToCart(prd3,49);
 
 
 //cartService.deleteProductFromCart(crt1);
@@ -52,7 +64,7 @@ const ordr={name:"sipariş 1",isSold:false,cart:cartRepository.getAll(),owner:ne
 //orderRepository.create(ordr);
 
 //console.log(cartService.getCart());
-cartService.salecartListCart();
+cartService.saleCart();
 console.log(productService.getAllProduct());
 console.log(cartService.getCart());
 

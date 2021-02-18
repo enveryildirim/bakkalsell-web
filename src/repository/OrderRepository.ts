@@ -9,6 +9,7 @@ export class OrderRepository implements IRepository<Order> {
       ? orderList[orderList.length - 1].id + 1
       : 0;
     order.id = newID;
+    order.isSold=false;
     orderList.push(order);
   }
 
@@ -22,6 +23,10 @@ export class OrderRepository implements IRepository<Order> {
   }
   get(id: number): Order {
     const result = orderList.filter(ordrItem => ordrItem.id == id);
+    return result.length > 0 ? result[0] : undefined;
+  }
+  getByUserID(id: number): Order {
+    const result = orderList.filter(ordrItem => ordrItem.owner.id == id);
     return result.length > 0 ? result[0] : undefined;
   }
   getAll(): Array<Order> {
