@@ -7,14 +7,19 @@ export class UserService {
     this.userRepository = userRepo;
   }
   createUser(user: User): void {
-    //model valid mi şeklinde kontrol ediluserService.createUser(newUser);iecek
-    this.userRepository.create(user);
-    console.log(this.userRepository.getAll());
+    if (this.isValid(user)) {
+      this.userRepository.create(user);
+    } else {
+      console.log("User tipi valid değil !!!");
+    }
   }
 
   updateUser(user: User): void {
-    //validation işlemleri
-    this.userRepository.update(user);
+    if (this.isValid(user)) {
+      this.userRepository.update(user);
+    } else {
+      console.log("User tipi valid değil !!!");
+    }
   }
 
   deleteUser(user: User): void {
@@ -30,7 +35,14 @@ export class UserService {
   }
 
   login(username: string, password: string): boolean {
-    //validation
+    if (
+      username.length < 5 ||
+      password.length < 6 ||
+      username === undefined ||
+      password === undefined
+    ) {
+      return false;
+    }
     const loggedUser = this.userRepository.login(username, password);
     this.userRepository.setLoggedUser(loggedUser);
     if (loggedUser) {
@@ -40,11 +52,34 @@ export class UserService {
     }
   }
 
-  logout():void{
+  logout(): void {
     this.userRepository.setLoggedUser(undefined);
   }
 
-  getLoggedUser():User{
+  getLoggedUser(): User {
     return this.userRepository.getLoggedUser();
+  }
+
+  isValid(user: User): boolean {
+    let isValid: boolean = true;
+
+    if (
+      user.name === undefined ||
+      user.username === undefined ||
+      user.password === undefined ||
+      user.userType === undefined
+    ) {
+      isValid = false;
+    }
+
+    if (
+      user.username.length < 5 ||
+      user.password.length < 6 ||
+      user.name.length === 0
+    ) {
+      isValid = false;
+    }
+
+    return isValid;
   }
 }
