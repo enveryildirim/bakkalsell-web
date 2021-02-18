@@ -86,6 +86,6 @@ export class UserService {
 
   setPage(index:number){
     
-  Router.render(index);
+  Router.render(index)3 files modified, 5 added;
   }
 }
