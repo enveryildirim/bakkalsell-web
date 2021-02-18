@@ -6,6 +6,8 @@ import { UserType } from './src/models/UserType';
 import { UserService } from './src/Services/UserService';
 import { ProductRepository } from './src/repository/ProductRepository';
 import { ProductService } from './src/Services/ProductService';
+import { CartRepository } from './src/repository/CartRepository';
+import { OrderRepository } from './src/repository/OrderRepository';
 // Write TypeScript code!
 
 
@@ -15,10 +17,31 @@ const userService = new UserService(userRepository);
 const productRepository =new ProductRepository();
 const productService=new ProductService(productRepository);
 
+const cartRepository=new CartRepository();
+const orderRepository =new OrderRepository();
+
+const newUser = {id:1,name:"admin",username:"admin",password:"admin",userType:UserType.ADMIN};
+
 const prd={name:"elma",price:10,amount:600};
 const prd2={name:"armut",price:0,amount:500};
-const prd3={name:"gfhjghj",price:15,amount:100};
+const prd3={name:"portakal",price:15,amount:100};
 
+const crt1={product:prd,amount:20}
+const crt2={product:prd2,amount:20}
+const crt3={product:prd3,amount:20}
+
+cartRepository.create(crt1);
+cartRepository.create(crt2);
+cartRepository.create(crt3);
+
+const ordr={name:"sipariş 1",isSold:false,cart:cartRepository.getAll(),owner:newUser};
+
+orderRepository.create(ordr);
+
+console.log(orderRepository.getAll());
+
+
+/*
 productService.createProduct(prd);
 productService.createProduct(prd);
 productService.createProduct(prd2);
