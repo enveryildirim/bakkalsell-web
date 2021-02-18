@@ -106,7 +106,7 @@ Router.insertPage(home);
 Router.render(0);
 const usrr:IPage= new UserCreatePage();
 Router.insertPage(usrr);
-userService.setPage(23 files modified, 5 added);
+userService.setPage(2);
 /*
 const appDiv: HTMLElement = document.getElementById('app');
 //appDiv.innerHTML = `<h1>TypeScript Starter</h1>`;
