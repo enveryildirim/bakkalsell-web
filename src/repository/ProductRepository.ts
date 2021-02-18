@@ -27,4 +27,8 @@ export class ProductRepository implements IRepository<Product> {
   getAll(): Array<Product> {
     return productList;
   }
+  getProductByName(name:string):Product{
+    const result = productList.filter(productItem => productItem.name == name);
+    return result.length > 0 ? result[0] : undefined;
+  }
 }

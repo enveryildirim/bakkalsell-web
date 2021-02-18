@@ -1,20 +1,24 @@
 import { Product } from "../models/Product";
 import { ProductRepository } from "../repository/ProductRepository";
 
-export class UserService {
+export class ProductService {
   productRepository: ProductRepository;
   constructor(productRepo: ProductRepository) {
     this.productRepository = productRepo;
   }
-  createUser(product: Product): void {
+  createProduct(product: Product): void {
     if (this.isValid(product)) {
-      this.productRepository.create(product);
+      if (!this.productRepository.getProductByName(product.name)) {
+        this.productRepository.create(product);
+      } else {
+        console.log("Ürün zaten eklenmiş!!!!");
+      }
     } else {
       console.log("Product tipi valid değil !!!");
     }
   }
 
-  updateUser(product: Product): void {
+  updateProduct(product: Product): void {
     if (this.isValid(product)) {
       this.productRepository.update(product);
     } else {
@@ -22,15 +26,15 @@ export class UserService {
     }
   }
 
-  deleteUser(product: Product): void {
+  deleteProduct(product: Product): void {
     this.productRepository.deletee(product);
   }
 
-  getUserById(id: number): Product {
+  getProductById(id: number): Product {
     return this.productRepository.get(id);
   }
 
-  getAllUser(): Array<Product> {
+  getAllProduct(): Array<Product> {
     return this.productRepository.getAll();
   }
 
@@ -46,9 +50,9 @@ export class UserService {
     }
 
     if (
-      product.price === 0 ||
+      product.price <= 0 ||
       product.price > 1000 ||
-      product.amount === 0 ||
+      product.amount <= 0 ||
       product.amount > 1000 ||
       product.name.length === 0
     ) {
