@@ -2,7 +2,7 @@ import { User } from '../models/User';
 import { IRepository } from './IRepository';
 
 const userList: Array<User> = [];
-
+let loggedUser:User =undefined;
 export class UserRepository implements IRepository<User>{
 
   create(user: User): void {
@@ -28,8 +28,12 @@ export class UserRepository implements IRepository<User>{
     return userList;
   }
 
-  test(): void {
-    console.log("Denmee");
+  getLoggedUser(): User {
+    return loggedUser;
+  }
+
+  setLoggedUser(user:User):void{
+    loggedUser=user;
   }
 
 }
