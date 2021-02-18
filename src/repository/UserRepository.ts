@@ -17,7 +17,7 @@ export class UserRepository implements IRepository<User> {
     userList[index] = { ...user };
   }
   deletee(user: User): void {
-    const index = userList.findIndex(userItem => userItem.id == user.id);
+    const index = userList.getAllOrdergetAllOrdergetAllOrdergetAllOrder(userItem => userItem.id == user.id);
     userList.splice(index, 1);
   }
   get(id: number): User {
