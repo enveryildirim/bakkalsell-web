@@ -6,6 +6,7 @@ export class ProductService {
   constructor(productRepo: ProductRepository) {
     this.productRepository = productRepo;
   }
+  
   createProduct(product: Product): void {
     if (this.isValid(product)) {
       if (!this.productRepository.getProductByName(product.name)) {

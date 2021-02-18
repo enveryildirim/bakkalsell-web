@@ -27,4 +27,11 @@ export class CartRepository implements IRepository<CartItem> {
   getAll(): Array<CartItem> {
     return cartList;
   }
+  getCartItemByProductID(id: number): CartItem {
+    const result = cartList.filter(crtItem => crtItem.product.id == id);
+    return result.length > 0 ? result[0] : undefined;
+  }
+  clearCart():void{
+    cartList.splice(0,cartList.length);
+  }
 }
