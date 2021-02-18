@@ -41,4 +41,6 @@ export class UserRepository implements IRepository<User> {
   setLoggedUser(user: User): void {
     loggedUser = user;
   }
+
+  
 }

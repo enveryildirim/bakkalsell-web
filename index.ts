@@ -11,6 +11,11 @@ import { OrderRepository } from './src/repository/OrderRepository';
 import { CartItem } from './src/models/CartItem';
 import { CartService } from './src/Services/CartService';
 import { OrderService } from './src/Services/OrderService';
+import { Router } from './src/routing/Router';
+import { Login } from './src/routing/Login';
+import { Home } from './src/routing/Home';
+import { IPage } from './src/routing/IPage';
+import { UserCreatePage } from './src/routing/UserCreatePage';
 // Write TypeScript code!
 
 
@@ -92,6 +97,19 @@ newUser.userType=UserType.CUSTOMER;
 console.log(userRepository.getAll());
 
 */
+const rt:Router=new Router();
+const login:IPage =new Login();
+const home:IPage =new Home();
 
+Router.insertPage(login);
+Router.insertPage(home);
+Router.render(0);
+const usrr:IPage= new UserCreatePage();
+Router.insertPage(usrr);
+userService.setPage(2);
+/*
 const appDiv: HTMLElement = document.getElementById('app');
-appDiv.innerHTML = `<h1>TypeScript Starter</h1>`;
+//appDiv.innerHTML = `<h1>TypeScript Starter</h1>`;
+
+appDiv.innerHTML = rt.render1();*/
+

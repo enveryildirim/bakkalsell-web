@@ -1,5 +1,6 @@
 import { User } from "../models/User";
 import { UserRepository } from "../repository/UserRepository";
+import { Router } from "../routing/Router";
 
 export class UserService {
   userRepository: UserRepository;
@@ -81,5 +82,10 @@ export class UserService {
     }
 
     return isValid;
+  }
+
+  setPage(index:number){
+    
+  Router.render(index);
   }
 }
