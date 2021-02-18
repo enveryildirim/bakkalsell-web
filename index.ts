@@ -41,9 +41,12 @@ const crt2={product:prd2,amount:20}
 const crt3={product:prd3,amount:20}
 
 
-orderService.addProductToOrder(newUser,prd,10000);
-orderService.addProductToOrder(newUser,prd,1000);
-orderService.addProductToOrder(newUser,prd2,10000);
+orderService.addProductToOrder(newUser,prd,10);
+orderService.addProductToOrder(newUser,prd,111);
+orderService.addProductToOrder(newUser,prd2,21);
+orderService.addProductToOrder(newUser,prd3,51);
+
+orderService.deleteProductFromOrder(0,{product:prd2,amount:10});
 
 
 

@@ -54,7 +54,14 @@ export class OrderService {
     }
   }
 
-  deleteProductFromOrder(id: number, cartItem: CartItem) {}
+  deleteProductFromOrder(id: number, crtItem: CartItem) {
+    //userid ile yapılabilir 
+    const orders = this.orderRepository.get(id);
+    const index = orders.cart.findIndex(
+      cartItem => cartItem.product.id === crtItem.product.id
+    );
+    orders.cart.splice(index, 1);
+  }
 
   saleOrder(id: number): void {
     const orders = this.orderRepository.get(id);
