@@ -47,7 +47,7 @@ orderService.addProductToOrder(newUser,prd2,10000);
 
 
 
-console.log(orderService.getAllOrder()[0].cart);
+console.log(orderService.getAllOrder()[0]);
 /*
 cartService.addProductToCart(prd,20);
 cartService.addProductToCart(prd2,20);
