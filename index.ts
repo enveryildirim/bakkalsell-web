@@ -100,10 +100,11 @@ console.log(userRepository.getAll());
 const rt:Router=new Router();
 const login:IPage =new Login();
 const home:IPage =new Home();
-
+const userCreatePage=new UserCreatePage(); 
 Router.insertPage(login,'login');
 Router.insertPage(home,'home');
-Router.render("login");
+Router.insertPage(userCreatePage,"usercreate");
+Router.render("home");
 
 
 //Router.insertPage(usrr);

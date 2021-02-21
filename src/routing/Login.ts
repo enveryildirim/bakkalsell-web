@@ -6,13 +6,18 @@ isRequiredAuth: boolean;
 
 mount():void{
 let btn:HTMLButtonElement = document.getElementById("btn-login");
+
 let txt_username:HTMLInputElement = document.getElementById("username");
 let txt_password:HTMLInputElement = document.getElementById("password");
 
+txt_username?.addEventListener('change', (e:Event) =>{
+  console.log(e.target.value+"-"+txt_password.value);
+});
 
   btn?.addEventListener("click", (e:Event) => {
     console.log(txt_username.value+"--"+txt_password.value);
-    Router.render('home');
+   
+    //Router.render('home');
   });
 
 } 
@@ -37,7 +42,7 @@ let txt_password:HTMLInputElement = document.getElementById("password");
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" id="btn-login" class="btn btn-block btn-primary"> <i class="fas fa-sign-in-alt"></i> Giriş
+                    <button id="btn-login" class="btn btn-block btn-primary"> <i class="fas fa-sign-in-alt"></i> Giriş
                         Yap</button>
                 </div>
             </form>

@@ -12,5 +12,12 @@ export class Router {
 
     appDiv.innerHTML = this.pages[id].render();
     this.pages[id].mount();
+
+
+for (const [key, value] of Object.entries(this.pages)) {
+ value.mount();
+}
   }
+
+
 }
