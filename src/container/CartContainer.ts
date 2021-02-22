@@ -63,6 +63,7 @@ const btn_cart_product_removesList = document.getElementsByName("btn-cart-produc
 
       }
     });
+    
     let btn_order: HTMLButtonElement = document.getElementById("btn-order");
     btn_order?.addEventListener("click", (e: Event) => {
       if (this.cartService.getCart().length <= 0) {
