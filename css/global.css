@@ -1,0 +1,95 @@
+html{
+    color: #000 !important;
+    background-color: #f1f1f1 !important;
+    font-family: "Open Sans",sans-serif;
+}
+.text-center{
+    text-align: center;
+}
+.container{
+    margin: 0 auto;
+    /*background-color: chartreuse;*/
+    max-width: 1400px;
+}
+
+.list-style-none{
+    list-style: none;
+}
+
+.box-shadow{
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.border{
+    border: 1px solid #ccc!important;
+}
+.border-radius{
+    border-radius: 4px;
+}
+
+/*Card*/
+.card{
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+/*Forms and Iputs*/
+.input{
+    padding: 8px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    overflow: visible;
+    margin: 0;
+    font: inherit;
+}
+.form-group{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+/*Buttons*/
+.btn{
+    font: inherit;
+    margin: 0;
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.btn-block{
+    display: block;
+    width: 100%;
+}
+
+.btn-default{
+    color: #000;
+}
+.btn-default:hover{
+    color: #f44336;
+}
+.btn-primary{
+    color: #fff!important;
+    background-color: #4936f4!important;
+}
+
+.btn-primary:hover{
+    color: #000!important;
+    background-color: #ccc!important;
+}
+
+.btn-danger{
+    color: #fff!important;
+    background-color: #f44336!important;
+}
+
+.btn-danger:hover{
+    color: #000!important;
+    background-color: #ccc!important;
+}

@@ -2,9 +2,9 @@ import { IPage } from "./IPage";
 
 export class Router {
   //static pages: Array<IPage> = [];
-   static pages: { [id: string]: IPage; } = {};
-  static insertPage(page: IPage,name:string): void {
-    this.pages[name]=page;
+  static pages: { [id: string]: IPage } = {};
+  static insertPage(page: IPage, name: string): void {
+    this.pages[name] = page;
   }
 
   static render(id: string): void {
@@ -13,11 +13,12 @@ export class Router {
     appDiv.innerHTML = this.pages[id].render();
     this.pages[id].mount();
 
-
-for (const [key, value] of Object.entries(this.pages)) {
- value.mount();
-}
+    for (const [key, value] of Object.entries(this.pages)) {
+      value.mount();
+    }
   }
 
-
+  static get(id:string):IPage{
+    return this.pages[id];
+  }
 }

@@ -1,31 +1,39 @@
-import { IPage } from "./IPage";
-import { Router } from "./Router";
+import { IPage } from "../routing/IPage";
+import { Router } from "../routing/Router";
 
-export class Login implements IPage{
-isRequiredAuth: boolean;
+export class LoginContainer implements IPage {
+  isRequiredAuth: boolean;
+  isLogged: boolean = false;
+  mount(): void {
+    let btn: HTMLButtonElement = document.getElementById("btn-login");
 
-mount():void{
-let btn:HTMLButtonElement = document.getElementById("btn-login");
+    let txt_username: HTMLInputElement = document.getElementById("username");
+    let txt_password: HTMLInputElement = document.getElementById("password");
 
-let txt_username:HTMLInputElement = document.getElementById("username");
-let txt_password:HTMLInputElement = document.getElementById("password");
 
-txt_username?.addEventListener('change', (e:Event) =>{
-  console.log(e.target.value+"-"+txt_password.value);
-});
 
-  btn?.addEventListener("click", (e:Event) => {
-    e.preventDefault();
-    console.log(txt_username.value+"--"+txt_password.value);
+    btn?.addEventListener("click", (e: Event) => {
+      e.preventDefault();
+      //login Db bağlanacak
+      console.log(txt_username.value + "--" + txt_password.value);
+      this.isLogged=true;
+      //Router.render('home');
+    });
+
+  }
+
+
+  render(): string {
+    //db kontrol edilece
    
-    //Router.render('home');
-  });
 
-} 
+    if (this.isLogged) {
+      return`
+      <h1>Kullanıcı Bilgileri</h1>
+      `;
 
-
-  render():string{
-    return `<h1>Login Sayfası</h1>
+    } else {
+      return `<h1>Login Sayfası</h1>
      <form id="login-form" class="border box-shadow"  style="text-align: center;">
 
                 <div class="form-group">
@@ -49,6 +57,6 @@ txt_username?.addEventListener('change', (e:Event) =>{
             </form>
 
     `;
+    }
   }
-  
 }

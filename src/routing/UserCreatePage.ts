@@ -18,10 +18,10 @@ let btn:HTMLButtonElement = document.getElementById("btn");
   render():string{
     return `<h1>Kullanıcı Ekleme Sayfası</h1>
      <div class="form-group">
-                    <label for="password">Şifre</label>
+                    <laba href="#"el for="password">Şifre</label>
                     <input type="password" id="txt" class="input" placeholder="Şifre">
                     <button id="btn">Giriş
                         Yap</button>
-                </div>`;;
+                </div>`;
   }
 }

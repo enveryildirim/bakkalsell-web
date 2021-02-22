@@ -2,6 +2,10 @@ import { UserRepository } from './src/repository/UserRepository';
 import {User} from './src/models/User';
 // Import stylesheets
 import './style.css';
+import './css/global.css';
+import './css/main.css';
+import './css/mobile.css';
+
 import { UserType } from './src/models/UserType';
 import { UserService } from './src/Services/UserService';
 import { ProductRepository } from './src/repository/ProductRepository';
@@ -16,7 +20,12 @@ import { Login } from './src/routing/Login';
 import { Home } from './src/routing/Home';
 import { IPage } from './src/routing/IPage';
 import { UserCreatePage } from './src/routing/UserCreatePage';
-// Write TypeScript code!
+import { HomePage } from './src/pages/HomePage';
+import { LoginContainer } from './src/container/LoginContainer';
+import { UserActionsContainer } from './src/container/UserActionsContainer';
+import { CartContainer } from './src/container/CartContainer';
+import { ProductContainer } from './src/container/ProductContainer';
+
 
 
 const userRepository =new UserRepository();
@@ -31,7 +40,9 @@ const orderRepository =new OrderRepository();
 const cartService = new CartService(cartRepository,productRepository);
 const orderService = new OrderService(orderRepository);
 
-const newUser = {id:1,name:"admin",username:"admin",password:"admin",userType:UserType.ADMIN};
+const newUser = {id:1,name:"admin",username:"adminadmin",password:"adminadmin",userType:UserType.ADMIN};
+userService.createUser(newUser);
+console.log(userService.getAllUser());
 
 const prd={id:0,name:"elma",price:10,amount:600};
 const prd2={id:1,name:"armut",price:10,amount:500};
@@ -41,21 +52,25 @@ productService.createProduct(prd);
 productService.createProduct(prd2);
 productService.createProduct(prd3);
 
+console.log(productService.getAllProduct());
+
 const crt1={id:0,product:prd,amount:20}
 const crt2={product:prd2,amount:20}
 const crt3={product:prd3,amount:20}
 
+cartService.addProductToCart(prd,12);
+console.log(cartService.getCart());
 
 orderService.addProductToOrder(newUser,prd,10);
 orderService.addProductToOrder(newUser,prd,111);
 orderService.addProductToOrder(newUser,prd2,21);
 orderService.addProductToOrder(newUser,prd3,51);
 
-orderService.deleteProductFromOrder(0,{product:prd2,amount:10});
+//orderService.deleteProductFromOrder(0,{product:prd2,amount:10});
 
 
 
-//console.log(orderService.getAllOrder()[0]);
+console.log(orderService.getAllOrder());
 /*
 cartService.addProductToCart(prd,20);
 cartService.addProductToCart(prd2,20);
@@ -97,16 +112,28 @@ newUser.userType=UserType.CUSTOMER;
 console.log(userRepository.getAll());
 
 */
-const rt:Router=new Router();
-const login:IPage =new Login();
-const home:IPage =new Home();
-const userCreatePage=new UserCreatePage(); 
-Router.insertPage(login,'login');
-Router.insertPage(home,'home');
-Router.insertPage(userCreatePage,"usercreate");
+
+/*Routin Ayarlamalrı */
+
+
+
+const homePage:IPage = new HomePage();
+Router.insertPage(homePage,'home');
+
+/*Containerlar */
+const loginContainer:IPage =new LoginContainer();
+const userActionsContainer : IPage = new UserActionsContainer();
+const cartContainer :IPage = new CartContainer(cartService);
+const productContainer :IPage = new ProductContainer(productService,cartService);
+
+Router.insertPage(loginContainer,'con_login');
+Router.insertPage(userActionsContainer,"con_useractions");
+Router.insertPage(cartContainer,"con_cart")
+Router.insertPage(productContainer,"con_product");
+
+
+
 Router.render("home");
-
-
 //Router.insertPage(usrr);
 //userService.setPage(0);
 
@@ -135,4 +162,4 @@ function handleClick() {
    let pusheditems: { [id: string]: any; } = {};    // dictionary with key of string, and values of type any
     pusheditems["a"] =10; 
 
-console.log(pusheditems["a"]);
+//console.log(pusheditems["a"]);
