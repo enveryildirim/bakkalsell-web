@@ -41,7 +41,12 @@ const cartService = new CartService(cartRepository,productRepository);
 const orderService = new OrderService(orderRepository);
 
 const newUser = {id:1,name:"admin",username:"adminadmin",password:"adminadmin",userType:UserType.ADMIN};
+const newUser2 = {id:2,name:"kasiyer",username:"useruser",password:"useruser",userType:UserType.EMPLOYEE};
+const newUser3 = {id:3,name:"customer",username:"customer",password:"customer",userType:UserType.CUSTOMER};
 userService.createUser(newUser);
+userService.createUser(newUser2);
+userService.createUser(newUser3);
+
 //console.log(userService.getAllUser());
 
 const prd={id:0,name:"elma",price:10,amount:600};
@@ -123,7 +128,7 @@ Router.insertPage(homePage,'home');
 /*Containerlar */
 const loginContainer:IPage =new LoginContainer(userService);
 const userActionsContainer : IPage = new UserActionsContainer(userService);
-const cartContainer :IPage = new CartContainer(cartService);
+const cartContainer :IPage = new CartContainer(cartService,userService);
 const productContainer :IPage = new ProductContainer(productService,cartService);
 
 Router.insertPage(loginContainer,'con_login');
