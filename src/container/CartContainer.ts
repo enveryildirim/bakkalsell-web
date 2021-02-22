@@ -35,7 +35,17 @@ export class CartContainer implements IPage {
 
       });
     });
+const btn_cart_product_removesList = document.getElementsByName("btn-cart-product-remove");
+    btn_cart_product_removesList?.forEach(btn_cart_product_remove=>{
+         btn_cart_product_remove?.addEventListener("click", (e: Event,) => {
+           const id:number=Number(e.target.getAttribute("cartItemID"));
+           const cartItem :CartItem =this.cartService.getCartItemByID(id); 
+          
+          this.cartService.deleteProductFromCart(cartItem);
+        
 
+    });
+    });
     //btn-btn_action
     let btn_sale: HTMLButtonElement = document.getElementById("btn-sale");
     btn_sale?.addEventListener("click", (e: Event) => {
@@ -92,6 +102,7 @@ export class CartContainer implements IPage {
                     <span>${item.product.price} X </span>
                     <input type="number" id="quantity" name="input_quantity" cartItemID=${item.id} style="width:auto;text-align:center;" min="1" max="500" value="${item.amount}">
                     <span>Tutar:${item.amount * item.product.price} tl</span>
+                    <button class="btn btn-danger" name="btn-cart-product-remove" cartItemID=${item.id}>Kaldır</button>
                 </li>`;
       totalPrice += item.amount * item.product.price;
       countProduct++;

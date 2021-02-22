@@ -27,13 +27,14 @@
     margin: auto;
     background-color: #fff;
     position: relative;
-    padding: 0;
+    padding: 2rem;
     outline: 0;
     width: 600px;
 }
 
 .modal_input {
     padding: 8px;
+    margin: 8px;
     display: block;
     width: 100%;
 }
@@ -92,4 +93,14 @@
     
 }
 
-/**/
+/*button*/
+.btn-link{
+  text-decoration: none;
+  border: none;
+  color:blue;
+}
+.btn-link:hover{
+  text-decoration: none;
+  border: none;
+  color:red;
+}

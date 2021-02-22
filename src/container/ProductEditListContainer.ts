@@ -68,10 +68,9 @@ export class ProductEditListContainer implements IPage {
                 <p>Fiyat:${item.price} TL</p>
                 <p>Stok:${item.amount}</p>
                 <hr />
-                 <input type="number" id="input_amount${item.id}" name="amount" style="width:auto;text-align:center;" min="1" max="500" value="1">
-                
-                 <button type="button" name="btn_product_modal_edit" productID=${item.id} class="btn-block btn"><i class="fas fa-cart-plus"></i> Düzenle</button>
-                 <button type="button" name="btn_product_modal_delete" productID=${item.id} class="btn-block btn"><i class="fas fa-cart-plus"></i> Sil</button>
+              
+                 <button type="button" name="btn_product_modal_edit" productID=${item.id}  class="btn-block btn-link btn"><i class="far fa-edit"></i> Düzenle</button>
+                 <button type="button" name="btn_product_modal_delete" productID=${item.id} class="btn-block btn-link btn"><i class="far fa-minus-square"></i></i> Sil</button>
             </div>`;
     });
 

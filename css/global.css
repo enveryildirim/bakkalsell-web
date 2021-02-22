@@ -73,6 +73,7 @@ html{
 }
 .btn-default:hover{
     color: #f44336;
+    background-color: #e8e8e8;
 }
 .btn-primary{
     color: #fff!important;

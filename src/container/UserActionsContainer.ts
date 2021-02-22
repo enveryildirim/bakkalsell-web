@@ -48,21 +48,13 @@ export class UserActionsContainer implements IPage {
       if(loggedUser.userType===0){
         result = 
       `   <div class="border box-shadow text-center" style="margin-top: 10px;">
-                <h3>İşlemler</h3>
+                <h3>Sayfaları</h3>
                 <hr style="margin: 0 auto; width:50%;border:2px solid black;opacity: 0.4;" class="w3-round">
                 <ul id="actions" class="list-style-none">
-                    <li class="btn btn-default btn-block" style="text-align: left;"><a href="#"
-                            style="text-decoration: none;"><i class="fas fa-user-plus"
-                                style="margin-right: 0.4rem;"></i>User Ekleme</a></li>
-                    <li class="btn btn-default btn-block" style="text-align: left;"><a href="#"
-                            style="text-decoration: none;"><i class="fas fa-user-minus"
-                                style="margin-right: 0.4rem;"></i>User Silme</a></li>
-                    <li class="btn btn-default btn-block" style="text-align: left;"><a href="#"
-                            style="text-decoration: none;"><i class="fas fa-user-edit"
-                                style="margin-right: 0.4rem;"></i>User Düzenleme</a></li>
+                 
 
-                                 <button id="btn-customer-home" class="btn btn-primary btn-block"> <i class="fas fa-sign-out-alt"></i> Home </button>
-                                 <button id="btn-product-list" class="btn btn-primary btn-block"> <i class="fas fa-sign-out-alt"></i> Ürünler </button>
+                                 <button id="btn-customer-home" class="btn btn-default btn-block"><i class="fas fa-store-alt"></i> Home </button>
+                                 <button id="btn-product-list" class="btn btn-default btn-block"> <i class="fas fa-gift"></i> Ürünler </button>
                 </ul>
             </div>
 `;
@@ -71,16 +63,16 @@ export class UserActionsContainer implements IPage {
       else if(loggedUser.userType===1){
         result = `
         <div class="border box-shadow text-center" style="margin-top: 10px;">
-        <h1>Kasiyer işlemleri</h1>
+        <h1>Kasiyer Sayfaları</h1>
         </div>`;
       }
     
     else{
       result = `
         <div class="border box-shadow text-center" style="margin-top: 10px;">
-        <h1>Müşteri işlemleri</h1>
-        <button id="btn-customer-home" class="btn btn-primary btn-block"> <i class="fas fa-sign-out-alt"></i> Home </button>
-        <button id="btn-customer-myorder" class="btn btn-primary btn-block"> <i class="fas fa-sign-out-alt"></i> Siparişlerim </button>
+        <h1>Müşteri Sayfaları</h1>
+        <button id="btn-customer-home" class="btn btn-default btn-block"><i class="fas fa-store-alt"></i>  Home </button>
+        <button id="btn-customer-myorder" class="btn btn-default btn-block"> <i class="fas fa-shopping-basket"></i> Siparişlerim </button>
         </div>`;
     }
     }

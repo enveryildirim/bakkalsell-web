@@ -68,20 +68,9 @@ export class ProductActionsContainer implements IPage {
                 <h3>İşlemler</h3>
                 <hr style="margin: 0 auto; width:50%;border:2px solid black;opacity: 0.4;" class="w3-round">
                 <ul id="actions" class="list-style-none">
-                    <li class="btn btn-default btn-block" style="text-align: left;"><a href="#"
-                            style="text-decoration: none;"><i class="fas fa-user-plus"
-                                style="margin-right: 0.4rem;"></i>User Ekleme</a></li>
-                    <li class="btn btn-default btn-block" style="text-align: left;"><a href="#"
-                            style="text-decoration: none;"><i class="fas fa-user-minus"
-                                style="margin-right: 0.4rem;"></i>User Silme</a></li>
-                    <li class="btn btn-default btn-block" style="text-align: left;"><a href="#"
-                            style="text-decoration: none;"><i class="fas fa-user-edit"
-                                style="margin-right: 0.4rem;"></i>User Düzenleme</a></li>
-                
-                
-                <button type="button" style="display: block;"
-                            onclick="document.getElementById('modal_new').style.display='block'"> Ürün Ekleme Modal
-                            Aç</button></li>
+                <button type="button" class="btn btn-link" style="display: block;"
+                            onclick="document.getElementById('modal_new').style.display='block'"><i class="far fa-plus-square" style="margin-right: 0.4rem;"></i> Ürün Ekle</button>
+                           
                 </ul>
 
                             <!-- Modal that pops up when you click on "New Message" -->
@@ -92,17 +81,17 @@ export class ProductActionsContainer implements IPage {
                         <h2>Ürün Ekleme</h2>
                     </div>
                     <div>
-                        <label>Ürün Adı</label>
+                        <label for="modal_product_new_name">Ürün Adı</label>
                         <input class="modal_input" id="modal_product_new_name" type="text">
-                        <label>Fiyat</label>
-                        <input class="modal_input" id="modal_product_new_price" type="number">
-                        <label>Stok </label>
-                        <input class="modal_input" id="modal_product_new_amount" type="number">
+                        <label for="modal_product_new_price">Fiyat</label>
+                        <input class="modal_input" id="modal_product_new_price" style="text-align:center;" type="number" type="number" max="1000" min="1" value="1">
+                        <label for="modal_product_new_amount">Stok </label>
+                        <input class="modal_input" id="modal_product_new_amount" style="text-align:center;" type="number" max="1000" min="1" value="1">
                         <div>
-                            <button type="button"
+                            <button type="button" class="btn btn-danger"
                                 onclick="document.getElementById('modal_new').style.display='none'">İptal</button>
                             <button type="button" id="btn_new_product"
-                                >Kaydet</button>
+                                class="btn btn-primary" >Kaydet</button>
 
                         </div>
                     </div>
@@ -123,9 +112,9 @@ export class ProductActionsContainer implements IPage {
                         <label>Stok </label>
                         <input class="modal_input" id="modal_product_update_amount" type="number">
                         <div>
-                            <button type="button"
+                            <button type="button" class="btn btn-danger"
                                 onclick="document.getElementById('modal_update').style.display='none'">İptal</button>
-                            <button type="button"
+                            <button type="button" class="btn btn-primary"
                                 id="btn_update_product">Güncelle</button>
 
                         </div>
