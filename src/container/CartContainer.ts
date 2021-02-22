@@ -1,5 +1,6 @@
 import { CartItem } from "../models/CartItem";
 import { IPage } from "../routing/IPage";
+import { Router } from "../routing/Router";
 import { CartService } from "../Services/CartService";
 
 export class CartContainer implements IPage {
@@ -9,6 +10,23 @@ export class CartContainer implements IPage {
   }
   isRequiredAuth: boolean;
   mount(): void{
+ const inputs_quantity= document.getElementsByName("input_quantity");
+    inputs_quantity?.forEach(inputItem=>{
+         inputItem?.addEventListener("change", (e: Event,) => {
+           const amount:number=Number(e.target.value);
+           if(amount<=0 || amount>1000){
+             alert("1-1000 arası bir değer giriniz");
+             e.target.value=1;
+             return;
+           }
+           const id:number=Number(e.target.getAttribute("cartItemID"));
+           const cartItem :CartItem =this.cartService.getCartItemByID(id);
+           cartItem.amount=amount;
+           this.cartService.updateCart(cartItem);
+           Router.render("home");
+
+    });
+    });
 
   };
   
@@ -25,7 +43,7 @@ export class CartContainer implements IPage {
                     <span>${item.product.name}</span>
                     <br>
                     <span>${item.product.price} X </span>
-                    <input type="number" id="quantity" name="quantity" style="width:auto" min="1" max="500" value="${item.amount}">
+                    <input type="number" id="quantity" name="input_quantity" cartItemID=${item.id} style="width:auto" min="1" max="500" value="${item.amount}">
                     <span>Tutar:${item.amount*item.product.price} tl</span>
                 </li>`;
                 totalPrice+=item.amount*item.product.price;

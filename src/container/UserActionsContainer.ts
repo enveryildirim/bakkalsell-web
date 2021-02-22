@@ -45,7 +45,7 @@ export class UserActionsContainer implements IPage {
                             style="text-decoration: none;"><i class="fas fa-user-edit"
                                 style="margin-right: 0.4rem;"></i>User Düzenleme</a></li>
                 </ul>
-            </div>222222222222
+            </div>
 `;
       }
 

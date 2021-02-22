@@ -42,7 +42,7 @@ const orderService = new OrderService(orderRepository);
 
 const newUser = {id:1,name:"admin",username:"adminadmin",password:"adminadmin",userType:UserType.ADMIN};
 userService.createUser(newUser);
-console.log(userService.getAllUser());
+//console.log(userService.getAllUser());
 
 const prd={id:0,name:"elma",price:10,amount:600};
 const prd2={id:1,name:"armut",price:10,amount:500};
@@ -52,14 +52,14 @@ productService.createProduct(prd);
 productService.createProduct(prd2);
 productService.createProduct(prd3);
 
-console.log(productService.getAllProduct());
+//console.log(productService.getAllProduct());
 
 const crt1={id:0,product:prd,amount:20}
 const crt2={product:prd2,amount:20}
 const crt3={product:prd3,amount:20}
 
 cartService.addProductToCart(prd,12);
-console.log(cartService.getCart());
+//console.log(cartService.getCart());
 
 orderService.addProductToOrder(newUser,prd,10);
 orderService.addProductToOrder(newUser,prd,111);
@@ -70,7 +70,7 @@ orderService.addProductToOrder(newUser,prd3,51);
 
 
 
-console.log(orderService.getAllOrder());
+//console.log(orderService.getAllOrder());
 /*
 cartService.addProductToCart(prd,20);
 cartService.addProductToCart(prd2,20);

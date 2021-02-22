@@ -17,10 +17,17 @@ export class ProductContainer implements IPage {
     btn_addToCart?.forEach(btnItem=>{
          btnItem?.addEventListener("click", (e: Event,) => {
            const id:number=Number(e.target.getAttribute("productID"));
-           const product :Product =this.productService.getProductById(id);
+           const product :Product =this.productService.getProductById(id); 
 
           const amountElement:HTMLInputElement = document.getElementById(`input_amount${id}`);
           const amount:number =Number(amountElement.value);
+
+           if(amount<=0 || amount>1000){
+             alert("1-1000 arası bir değer giriniz");
+             amountElement.value=1;
+             return;
+           }
+          
           this.cartService.addProductToCart(product,amount);
           Router.render("home");
 
@@ -42,7 +49,7 @@ export class ProductContainer implements IPage {
                 <p>Stok:${item.amount}</p>
                 <hr />
                  <input type="number" id="input_amount${item.id}" name="amount" style="width:auto" min="1" max="500" value="1">
-                 <hr/>
+                
                 <button type="button" name="btn_addToCart" productID=${item.id} class="btn-block btn"><i class="fas fa-cart-plus"></i> Sepete Ekle</button>
             </div>`;
     });

@@ -46,6 +46,12 @@ export class CartService {
   clearCart(): void {
     this.cartRepository.clearCart();
   }
+  updateCart(cartItem:CartItem):void{
+    this.cartRepository.update(cartItem);
+  }
+  getCartItemByID(id:number):CartItem{
+    return this.cartRepository.get(id);
+  }
 
   getCart(): Array<CartItem> {
     return this.cartRepository.getAll();
