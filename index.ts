@@ -128,7 +128,7 @@ Router.insertPage(homePage,'home');
 /*Containerlar */
 const loginContainer:IPage =new LoginContainer(userService);
 const userActionsContainer : IPage = new UserActionsContainer(userService);
-const cartContainer :IPage = new CartContainer(cartService,userService);
+const cartContainer :IPage = new CartContainer(cartService,userService,orderService);
 const productContainer :IPage = new ProductContainer(productService,cartService);
 
 Router.insertPage(loginContainer,'con_login');

@@ -4,14 +4,17 @@ import { UserType } from "../models/UserType";
 import { IPage } from "../routing/IPage";
 import { Router } from "../routing/Router";
 import { CartService } from "../Services/CartService";
+import { OrderService } from "../Services/OrderService";
 import { UserService } from "../Services/UserService";
 
 export class CartContainer implements IPage {
   cartService: CartService;
   userService: UserService;
-  constructor(crtService: CartService, usrService) {
+  orderService: OrderService;
+  constructor(crtService: CartService, usrService: UserService, ordrService: OrderService) {
     this.cartService = crtService;
     this.userService = usrService;
+    this.orderService = ordrService;
   }
   isRequiredAuth: boolean;
   mount(): void {
@@ -36,22 +39,40 @@ export class CartContainer implements IPage {
     //btn-btn_action
     let btn_sale: HTMLButtonElement = document.getElementById("btn-sale");
     btn_sale?.addEventListener("click", (e: Event) => {
-      console.log(this.cartService.getCart());
-      if(this.cartService.getCart().length<=0){
+      
+      if (this.cartService.getCart().length <= 0) {
         alert("Sepet boş Ürün Ekleyin!!!");
         return;
       }
-     const result:boolean=confirm("Satış yapıldı mı");
-     if(result){
+      const result: boolean = confirm("Satış yapılsın mı");
+      if (result) {
         this.cartService.saleCart();
         Router.render("home");
-     }else{
+      } else {
 
-     }
+      }
     });
     let btn_order: HTMLButtonElement = document.getElementById("btn-order");
     btn_order?.addEventListener("click", (e: Event) => {
-      console.log("sipariş");
+      if (this.cartService.getCart().length <= 0) {
+        alert("Sepet boş Ürün Ekleyin!!!");
+        return;
+      }
+
+      const result: boolean = confirm("Sipariş verilsin mi");
+      if (result) {
+        const loggedUser: User = this.userService.getLoggedUser();
+        const cartItemList: Array<CartItem> = this.cartService.getCart();
+        cartItemList.map(crtItem => {
+          this.orderService.addProductToOrder(loggedUser, crtItem.product, crtItem.amount);
+        });
+        this.cartService.clearCart();
+        Router.render("home");
+      } else {
+
+      }
+
+      console.log(this.orderService.getAllOrder());
     });
 
   };
