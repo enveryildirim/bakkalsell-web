@@ -49,7 +49,7 @@ export class ProductContainer implements IPage {
 
 
     const result: string =
-      `<h1>Ürünler Sayfası</h1>` +
+      `` +
       ` <div id="content" class="border box-shadow text-center">
             ${productString}
             </div>`;

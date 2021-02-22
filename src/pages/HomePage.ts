@@ -15,13 +15,12 @@ export class HomePage implements IPage {
     const productContainer: IPage = Router.get("con_product");
 
     const result: string =
-      `<h1>Home Sayfası</h1>` +
+      `<div id="user-actions">`+
       loginContainer.render() +
-      `<hr/>` +
       userActionsContainer.render() +
-      `<hr/>` +
+     `</div>`+
       productContainer.render() +
-      `<hr/>` +
+      
       cartContainer.render();
 
     return result;
