@@ -28,6 +28,14 @@ export class UserActionsContainer implements IPage {
       Router.render('customerorderlist');
     });
 
+    let btn_product_list: HTMLButtonElement = document.getElementById("btn-product-list");
+    btn_product_list?.addEventListener("click", (e: Event) => {
+      console.log("Ürünlerim");
+      Router.render('producteditlist');
+    });
+
+  
+
 
   };
 
@@ -52,6 +60,9 @@ export class UserActionsContainer implements IPage {
                     <li class="btn btn-default btn-block" style="text-align: left;"><a href="#"
                             style="text-decoration: none;"><i class="fas fa-user-edit"
                                 style="margin-right: 0.4rem;"></i>User Düzenleme</a></li>
+
+                                 <button id="btn-customer-home" class="btn btn-primary btn-block"> <i class="fas fa-sign-out-alt"></i> Home </button>
+                                 <button id="btn-product-list" class="btn btn-primary btn-block"> <i class="fas fa-sign-out-alt"></i> Ürünler </button>
                 </ul>
             </div>
 `;

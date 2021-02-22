@@ -34,8 +34,8 @@ export class ProductActionsContainer implements IPage {
         name,
         price, amount
       };
-      this.porductService.createProduct(prd);
-      console.log(this.porductService.getAllProduct());
+      this.productService.createProduct(prd);
+      console.log(this.productService.getAllProduct());
       document.getElementById('modal_new').style.display = 'none';
       Router.render("producteditlist");
 
