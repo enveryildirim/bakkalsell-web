@@ -27,6 +27,9 @@ import { CartContainer } from './src/container/CartContainer';
 import { ProductContainer } from './src/container/ProductContainer';
 import { CustomerOrderListPage } from './src/pages/CustomerOrderListPage';
 import { CustomerOrderContainer } from './src/container/CustomerOrderContainer';
+import { ProductListPage } from './src/pages/ProductListPage';
+import { ProductEditListContainer } from './src/container/ProductEditListContainer';
+import { ProductActionsContainer } from './src/container/ProductActionsContainer';
 
 
 
@@ -127,8 +130,11 @@ console.log(userRepository.getAll());
 /*Page''ler */
 const homePage:IPage = new HomePage();
 const customerOrderList:IPage = new CustomerOrderListPage();
+const productListPage:IPage = new ProductListPage();
+
 Router.insertPage(homePage,'home');
 Router.insertPage(customerOrderList,"customerorderlist");
+Router.insertPage(productListPage,"producteditlist")
 
 /*Containerlar */
 const loginContainer:IPage =new LoginContainer(userService);
@@ -136,15 +142,20 @@ const userActionsContainer : IPage = new UserActionsContainer(userService);
 const cartContainer :IPage = new CartContainer(cartService,userService,orderService);
 const productContainer :IPage = new ProductContainer(productService,cartService);
 const customerOrderContainer:IPage=new CustomerOrderContainer(orderService,userService);
+const productEditListContainer:IPage = new ProductEditListContainer(productService);
+const productActionContainer:IPage = new ProductActionsContainer(productService);
 
 Router.insertPage(loginContainer,'con_login');
 Router.insertPage(userActionsContainer,"con_useractions");
 Router.insertPage(cartContainer,"con_cart")
 Router.insertPage(productContainer,"con_product");
 Router.insertPage(customerOrderContainer,"con_customer_order");
+Router.insertPage(productEditListContainer,"con_product_edit_list");
+Router.insertPage(productActionContainer,"con_product_actions");
 
-userService.login("customer","customer");
-Router.render("home");
+userService.login("adminadmin","adminadmin");
+
+Router.render("producteditlist");
 //Router.insertPage(usrr);
 //userService.setPage(0);
 
