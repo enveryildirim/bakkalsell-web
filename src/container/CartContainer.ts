@@ -90,7 +90,7 @@ export class CartContainer implements IPage {
                     <span>${item.product.name}</span>
                     <br>
                     <span>${item.product.price} X </span>
-                    <input type="number" id="quantity" name="input_quantity" cartItemID=${item.id} style="width:auto" min="1" max="500" value="${item.amount}">
+                    <input type="number" id="quantity" name="input_quantity" cartItemID=${item.id} style="width:auto;text-align:center;" min="1" max="500" value="${item.amount}">
                     <span>Tutar:${item.amount * item.product.price} tl</span>
                 </li>`;
       totalPrice += item.amount * item.product.price;

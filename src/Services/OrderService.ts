@@ -54,11 +54,29 @@ export class OrderService {
     }
   }
 
+  updateOrderProductAmount(orderID: number, productID: number, amount: number) {
+    const orders = this.orderRepository.get(orderID);
+    orders.cart.filter(item => item.product.id === productID)[0].amount = amount;
+  }
+
+deleteOrder(orderID:number){
+  const order=this.orderRepository.get(orderID);
+  this.orderRepository.deletee(order);
+}
   deleteProductFromOrder(id: number, crtItem: CartItem) {
     //userid ile yapılabilir 
     const orders = this.orderRepository.get(id);
     const index = orders.cart.findIndex(
       cartItem => cartItem.product.id === crtItem.product.id
+    );
+    orders.cart.splice(index, 1);
+  }
+
+  deleteProductFromOrder2(id: number, productID: number) {
+
+    const orders = this.orderRepository.get(id);
+    const index = orders.cart.findIndex(
+      cartItem => cartItem.product.id === productID
     );
     orders.cart.splice(index, 1);
   }
@@ -72,5 +90,9 @@ export class OrderService {
   }
   getAllOrder(): Array<Order> {
     return this.orderRepository.getAll();
+  }
+
+  getOrderByUserID(id: number): Order {
+    return this.orderRepository.getByUserID(id);
   }
 }

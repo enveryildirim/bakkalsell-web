@@ -48,7 +48,7 @@ export class ProductContainer implements IPage {
                 <p>Fiyat:${item.price} TL</p>
                 <p>Stok:${item.amount}</p>
                 <hr />
-                 <input type="number" id="input_amount${item.id}" name="amount" style="width:auto" min="1" max="500" value="1">
+                 <input type="number" id="input_amount${item.id}" name="amount" style="width:auto;text-align:center;" min="1" max="500" value="1">
                 
                 <button type="button" name="btn_addToCart" productID=${item.id} class="btn-block btn"><i class="fas fa-cart-plus"></i> Sepete Ekle</button>
             </div>`;

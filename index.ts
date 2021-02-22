@@ -25,6 +25,8 @@ import { LoginContainer } from './src/container/LoginContainer';
 import { UserActionsContainer } from './src/container/UserActionsContainer';
 import { CartContainer } from './src/container/CartContainer';
 import { ProductContainer } from './src/container/ProductContainer';
+import { CustomerOrderListPage } from './src/pages/CustomerOrderListPage';
+import { CustomerOrderContainer } from './src/container/CustomerOrderContainer';
 
 
 
@@ -60,16 +62,17 @@ productService.createProduct(prd3);
 //console.log(productService.getAllProduct());
 
 const crt1={id:0,product:prd,amount:20}
-const crt2={product:prd2,amount:20}
-const crt3={product:prd3,amount:20}
+const crt2={id:1,product:prd2,amount:20}
+const crt3={id:2,product:prd3,amount:20}
 
 cartService.addProductToCart(prd,12);
-//console.log(cartService.getCart());
+//console.log(cartService.getCart());`
 
-orderService.addProductToOrder(newUser,prd,10);
-orderService.addProductToOrder(newUser,prd,111);
-orderService.addProductToOrder(newUser,prd2,21);
-orderService.addProductToOrder(newUser,prd3,51);
+
+orderService.addProductToOrder(newUser3,prd,10);
+orderService.addProductToOrder(newUser3,prd,111);
+orderService.addProductToOrder(newUser3,prd2,21);
+orderService.addProductToOrder(newUser3,prd3,51);
 
 //orderService.deleteProductFromOrder(0,{product:prd2,amount:10});
 
@@ -121,24 +124,27 @@ console.log(userRepository.getAll());
 /*Routin Ayarlamalrı */
 
 
-
+/*Page''ler */
 const homePage:IPage = new HomePage();
+const customerOrderList:IPage = new CustomerOrderListPage();
 Router.insertPage(homePage,'home');
+Router.insertPage(customerOrderList,"customerorderlist");
 
 /*Containerlar */
 const loginContainer:IPage =new LoginContainer(userService);
 const userActionsContainer : IPage = new UserActionsContainer(userService);
 const cartContainer :IPage = new CartContainer(cartService,userService,orderService);
 const productContainer :IPage = new ProductContainer(productService,cartService);
+const customerOrderContainer:IPage=new CustomerOrderContainer(orderService,userService);
 
 Router.insertPage(loginContainer,'con_login');
 Router.insertPage(userActionsContainer,"con_useractions");
 Router.insertPage(cartContainer,"con_cart")
 Router.insertPage(productContainer,"con_product");
+Router.insertPage(customerOrderContainer,"con_customer_order");
 
 
-
-Router.render("home");
+Router.render("customerorderlist");
 //Router.insertPage(usrr);
 //userService.setPage(0);
 
