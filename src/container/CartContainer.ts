@@ -42,6 +42,7 @@ const btn_cart_product_removesList = document.getElementsByName("btn-cart-produc
            const cartItem :CartItem =this.cartService.getCartItemByID(id); 
           
           this.cartService.deleteProductFromCart(cartItem);
+          Router.render("home");
         
 
     });
