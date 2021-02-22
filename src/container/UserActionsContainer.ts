@@ -1,5 +1,6 @@
 import { User } from "../models/User";
 import { IPage } from "../routing/IPage";
+import { Router } from "../routing/Router";
 import { UserService } from "../Services/UserService";
 
 export class UserActionsContainer implements IPage {
@@ -15,12 +16,19 @@ export class UserActionsContainer implements IPage {
       console.log(e.target.value);
     });
 
-    let btn: HTMLButtonElement = document.getElementById("btn");
-    btn?.addEventListener("click", (e: Event) => {
-      console.log("Tıklandı");
-
-      //Router.render('home');
+    let btn_customer_home: HTMLButtonElement = document.getElementById("btn-customer-home");
+    btn_customer_home?.addEventListener("click", (e: Event) => {
+      console.log("home");
+      Router.render('home');
     });
+
+    let btn_customer_myorders: HTMLButtonElement = document.getElementById("btn-customer-myorder");
+    btn_customer_myorders?.addEventListener("click", (e: Event) => {
+      console.log("siparişlerim");
+      Router.render('customerorderlist');
+    });
+
+
   };
 
   render(): string {
@@ -60,6 +68,8 @@ export class UserActionsContainer implements IPage {
       result = `
         <div class="border box-shadow text-center" style="margin-top: 10px;">
         <h1>Müşteri işlemleri</h1>
+        <button id="btn-customer-home" class="btn btn-primary btn-block"> <i class="fas fa-sign-out-alt"></i> Home </button>
+        <button id="btn-customer-myorder" class="btn btn-primary btn-block"> <i class="fas fa-sign-out-alt"></i> Siparişlerim </button>
         </div>`;
     }
     }

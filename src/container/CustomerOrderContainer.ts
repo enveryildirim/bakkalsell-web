@@ -60,7 +60,7 @@ const buttons_remove = document.getElementsByName("btn_customer_order_remove_pro
 
   render(): string {
     //test amaçlı kaldırılacak
-    this.userService.login("customer","customer");
+   
     const loggedUser=this.userService.getLoggedUser();
     const userOrder=this.orderService.getOrderByUserID(loggedUser.id);
     console.log(userOrder);

@@ -28,6 +28,7 @@ export class LoginContainer implements IPage {
       const isLogged:boolean=this.userService.login(username,password);
       if(isLogged){
         Router.render("home");
+        //Router.render("customerorderlist");
       }else{
         alert("Bilgiler yanlış");
       }
@@ -51,7 +52,7 @@ export class LoginContainer implements IPage {
     const loggedUser:User=this.userService.getLoggedUser();
     if (loggedUser) {
       return`
-    <div id="user-info" class="border box-shadow text-center" style="margin-top: 10px;">
+    <div id="user-info" class="border box-shadow text-center" style="margin-bottom: 10px;">
       <h1>Kullanıcı Bilgileri</h1>
                 <i class="fas fa-user" style="font-size: 100px; width: 100%;"></i>
                 <p>Kullanıcı Adı: ${loggedUser.username}</p>

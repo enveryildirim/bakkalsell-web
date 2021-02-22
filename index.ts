@@ -143,8 +143,8 @@ Router.insertPage(cartContainer,"con_cart")
 Router.insertPage(productContainer,"con_product");
 Router.insertPage(customerOrderContainer,"con_customer_order");
 
-
-Router.render("customerorderlist");
+userService.login("customer","customer");
+Router.render("home");
 //Router.insertPage(usrr);
 //userService.setPage(0);
 
