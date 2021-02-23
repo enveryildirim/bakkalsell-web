@@ -52,7 +52,7 @@ export class ProductContainer implements IPage {
     productItems.map(item => {
 
       productString += `<div class="card product">
-                <i class="fas fa-gift" style="font-size:200px"></i>
+                 <img src="https://cdn.jsdelivr.net/gh/enveryildirim/bakkalsell-web@learning-subjects/img/product.png" alt="" style="width: 100px;height: 100px;">
                 <h3>${item.name}</h3>
                 <p>Fiyat:${item.price} TL</p>
                 <p>Stok:${item.amount}</p>

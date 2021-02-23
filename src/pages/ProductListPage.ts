@@ -10,7 +10,7 @@ export class ProductListPage implements IPage {
     const productEditListContainer: IPage = Router.get("con_product_edit_list");
     const productActionsContainer: IPage = Router.get("con_product_actions");
 
-    const result: string = `<div id="user-actions">
+    const result: string = `<div id="user-actions" >
           ${loginContainer.render()} ${userActionsContainer.render()}
     </div>
     <div id="content" class="border box-shadow text-center">

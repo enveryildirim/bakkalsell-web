@@ -68,12 +68,12 @@ export class ProductActionsContainer implements IPage {
     let result: string = ``
 
     result =
-      `   <div class="border box-shadow text-center"">
+      `   <div class="text-center" style="height:100%">
                 <h3>İşlemler</h3>
                 <hr style="margin: 0 auto; width:50%;border:2px solid black;opacity: 0.4;" class="w3-round">
                 <ul id="actions" class="list-style-none">
-                <button type="button" class="btn btn-link" style="display: block;"
-                            onclick="document.getElementById('modal_new').style.display='block'"><i class="far fa-plus-square" style="margin-right: 0.4rem;"></i> Ürün Ekle</button>
+                <button type="button" class="btn btn-link" style="display: block;background-color: transparent;"
+                            onclick="document.getElementById('modal_new').style.display='block'"><i class="far fa-plus-square" style="margin-right: 0.4rem; "></i> Ürün Ekle</button>
                            
                 </ul>
 

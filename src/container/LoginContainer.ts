@@ -55,7 +55,7 @@ export class LoginContainer implements IPage {
     if (loggedUser) {
       return `
      <div id="user-info" class="border box-shadow text-center" style="margin-bottom: 10px;">
-      <h1>Kullanıcı Bilgileri</h1>
+      <h3>Kullanıcı Bilgileri</h3>
                 <i class="fas fa-user" style="font-size: 100px; width: 100%;"></i>
                 <p>Kullanıcı Adı: ${loggedUser.username}</p>
                 <p>Bilgiler: ${loggedUser.name}</p>
@@ -67,7 +67,7 @@ export class LoginContainer implements IPage {
     } else {
 
       return ` 
-     <form id="login-form" class="border box-shadow"  style="text-align: center;">
+     <form id="login-form" class="border box-shadow"  style="text-align: center;height:100%;">
 
                 <div class="form-group">
                     <h3>Login Form</h3>
