@@ -119,7 +119,7 @@ export class CartContainer implements IPage {
 
     const cartItems: Array<CartItem> = this.cartService.getCart();
     cartItems.map(item => {
-      result += `<li class="cart-list-item border">
+     /* result += `<li class="cart-list-item border">
                     <i class="fas fa-carrot" style="font-size: 100px;"></i>
                     <span>${item.product.name}</span>
                     <br>
@@ -127,7 +127,19 @@ export class CartContainer implements IPage {
                     <input type="number" id="quantity" name="input_quantity" cartItemID=${item.id} style="width:auto;text-align:center;" min="1" max="500" value="${item.amount}">
                     <span>Tutar:${item.amount * item.product.price} tl</span>
                     <button class="btn btn-danger" name="btn-cart-product-remove" cartItemID=${item.id}>Kaldır</button>
-                </li>`;
+                </li>`;*/
+
+        result += `
+         <div style="display: flex; align-items: center;justify-content: center;flex-wrap: wrap;">
+              <img src="https://cdn.jsdelivr.net/gh/enveryildirim/bakkalsell-web@learning-subjects/img/product.png" style="width: 50px; height: 50px;">
+              <p>${item.product.name}  </p>
+              
+              <p>${item.product.price} TL X  <input type="number" id="quantity" name="input_quantity" cartItemID=${item.id} style="width:auto;text-align:center;" min="1" max="500" value="${item.amount}"> =
+               ${item.amount * item.product.price} TL   <p>
+                  
+                        <button class="btn btn-danger" name="btn-cart-product-remove" cartItemID=${item.id}>  <i class="fas fa-times"></i></button>
+          </div>
+        `;
       totalPrice += item.amount * item.product.price;
       countProduct++;
     });
