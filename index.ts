@@ -38,7 +38,7 @@ const cartRepository = new CartRepository();
 const orderRepository = new OrderRepository();
 
 const cartService = new CartService(cartRepository, productRepository);
-const orderService = new OrderService(orderRepository,productRepository);
+const orderService = new OrderService(orderRepository, productRepository);
 
 
 //Geliştime içiçn kullanılan Test Verileri eklenmesi
