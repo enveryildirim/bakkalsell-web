@@ -153,9 +153,9 @@ Router.insertPage(customerOrderContainer,"con_customer_order");
 Router.insertPage(productEditListContainer,"con_product_edit_list");
 Router.insertPage(productActionContainer,"con_product_actions");
 
-userService.login("adminadmin","adminadmin");
+//userService.login("adminadmin","adminadmin");
 
-Router.render("producteditlist");
+Router.render("home");
 //Router.insertPage(usrr);
 //userService.setPage(0);
 

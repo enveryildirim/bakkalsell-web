@@ -39,7 +39,7 @@ export class LoginContainer implements IPage {
       //login Db bağlanacak
         this.userService.logout();
         alert("Çıkış Yapıldı");
-        Router.render("home")
+        Router.render("home");
       
     });
 
