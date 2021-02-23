@@ -5,7 +5,7 @@ import { IPage } from "../routing/IPage";
 import { Router } from "../routing/Router";
 
 export class HomePage implements IPage {
-  mount(): void {}
+  mount(): void { }
 
   render(): string {
     const loginContainer: IPage = Router.get("con_login");

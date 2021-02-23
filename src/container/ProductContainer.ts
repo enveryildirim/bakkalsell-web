@@ -72,5 +72,5 @@ export class ProductContainer implements IPage {
     return result;
 
   }
-  
+
 }

@@ -7,13 +7,13 @@ import { UserService } from "../Services/UserService";
 
 export class CustomerOrderContainer implements IPage {
 
-  orderService:OrderService;
-  userService:UserService;
+  orderService: OrderService;
+  userService: UserService;
 
-  constructor(ordrService:OrderService,usrService:UserService){
+  constructor(ordrService: OrderService, usrService: UserService) {
 
-    this.orderService=ordrService;
-    this.userService=usrService;
+    this.orderService = ordrService;
+    this.userService = usrService;
 
   }
 
@@ -68,17 +68,16 @@ export class CustomerOrderContainer implements IPage {
       this.orderService.deleteOrder(orderID);
 
       Router.render("customerorderlist");
-      
+
     });
 
   };
 
   render(): string {
 
-    //test amaçlı kaldırılacak
-    const loggedUser=this.userService.getLoggedUser();
-    const userOrder=this.orderService.getOrderByUserID(loggedUser.id);
-    if(!userOrder){
+    const loggedUser = this.userService.getLoggedUser();
+    const userOrder = this.orderService.getOrderByUserID(loggedUser.id);
+    if (!userOrder) {
       return `<h1>Siparişiniz bulunmamaktadır!!!!</h1>`;
     }
 
@@ -103,7 +102,7 @@ export class CustomerOrderContainer implements IPage {
       countProduct++;
 
     });
-    
+
     return `
      <div id="cart" class="text-center box-shadow">
             <h3>Siparişlerim</h3>
@@ -122,5 +121,5 @@ export class CustomerOrderContainer implements IPage {
     `;
 
   }
-  
+
 }

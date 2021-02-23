@@ -2,7 +2,7 @@ import { IPage } from "../routing/IPage";
 import { Router } from "../routing/Router";
 
 export class CustomerOrderListPage implements IPage {
-  mount(): void {}
+  mount(): void { }
 
   render(): string {
     const customerOrderContainer: IPage = Router.get("con_customer_order");

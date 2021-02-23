@@ -45,7 +45,7 @@ export class UserService {
     }
     const loggedUser = this.userRepository.login(username, password);
     this.userRepository.setLoggedUser(loggedUser);
-    
+
     if (loggedUser !== undefined) {
       return true;
     } else {

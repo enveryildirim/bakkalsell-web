@@ -61,14 +61,14 @@ export class ProductEditListContainer implements IPage {
   }
 
   render(): string {
-    
+
     let result: string = ``;
 
     const productItems: Array<Product> = this.productService.getAllProduct();
     productItems.map(item => {
 
-      result += 
-      `<div class="card product">
+      result +=
+        `<div class="card product">
                 <i class="fas fa-gift" style="font-size:200px"></i>
                 <h3>${item.name}</h3>
                 <p>Fiyat:${item.price} TL</p>

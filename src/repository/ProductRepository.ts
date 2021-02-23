@@ -18,7 +18,7 @@ export class ProductRepository implements IRepository<Product> {
     );
     productList[index] = { ...product };
   }
-  
+
   deletee(product: Product): void {
     const index = productList.findIndex(
       productItem => productItem.id == product.id

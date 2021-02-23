@@ -18,7 +18,7 @@ export class Router {
     }
   }
 
-  static get(id:string):IPage{
+  static get(id: string): IPage {
     return this.pages[id];
   }
 }

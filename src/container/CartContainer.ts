@@ -103,10 +103,10 @@ export class CartContainer implements IPage {
           this.orderService.addProductToOrder(loggedUser, crtItem.product, crtItem.amount);
         });
         this.cartService.clearCart();
-        
+
         Router.render("home");
-      } 
-      
+      }
+
     });
 
   };
