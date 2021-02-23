@@ -90,7 +90,7 @@ const buttons_remove = document.getElementsByName("btn_customer_order_remove_pro
     
     return `
      <div id="cart" class="text-center box-shadow">
-            <h3>Sepetim</h3>
+            <h3>Siparişlerim</h3>
             <hr>
             <ul id="cart-product-list" class="list-style-none">
                ${result}
