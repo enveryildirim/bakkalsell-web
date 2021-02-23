@@ -8,83 +8,105 @@ import { OrderService } from "../Services/OrderService";
 import { UserService } from "../Services/UserService";
 
 export class CartContainer implements IPage {
+
   cartService: CartService;
   userService: UserService;
   orderService: OrderService;
+
   constructor(crtService: CartService, usrService: UserService, ordrService: OrderService) {
+
     this.cartService = crtService;
     this.userService = usrService;
     this.orderService = ordrService;
+
   }
-  isRequiredAuth: boolean;
+
   mount(): void {
+
     const inputs_quantity = document.getElementsByName("input_quantity");
     inputs_quantity?.forEach(inputItem => {
+
       inputItem?.addEventListener("change", (e: Event,) => {
-        const amount: number = Number(e.target.value);
+
+        const amount: number = Number((e.target as HTMLInputElement).value);
         if (amount <= 0 || amount > 1000) {
+
           alert("1-1000 arası bir değer giriniz");
-          e.target.value = 1;
+          (e.target as HTMLInputElement).value = "1";
           return;
+
         }
-        const id: number = Number(e.target.getAttribute("cartItemID"));
+
+        const id: number = Number((e.target as HTMLInputElement).getAttribute("cartItemID"));
         const cartItem: CartItem = this.cartService.getCartItemByID(id);
         cartItem.amount = amount;
         this.cartService.updateCart(cartItem);
+
         Router.render("home");
 
       });
-    });
-const btn_cart_product_removesList = document.getElementsByName("btn-cart-product-remove");
-    btn_cart_product_removesList?.forEach(btn_cart_product_remove=>{
-         btn_cart_product_remove?.addEventListener("click", (e: Event,) => {
-           const id:number=Number(e.target.getAttribute("cartItemID"));
-           const cartItem :CartItem =this.cartService.getCartItemByID(id); 
-          
-          this.cartService.deleteProductFromCart(cartItem);
-          Router.render("home");
-        
 
     });
+
+    const btn_cart_product_removesList = document.getElementsByName("btn-cart-product-remove");
+    btn_cart_product_removesList?.forEach(btn_cart_product_remove => {
+
+      btn_cart_product_remove?.addEventListener("click", (e: Event,) => {
+
+        const id: number = Number((e.target as HTMLButtonElement).getAttribute("cartItemID"));
+        const cartItem: CartItem = this.cartService.getCartItemByID(id);
+
+        this.cartService.deleteProductFromCart(cartItem);
+        Router.render("home");
+
+      });
+
     });
-    //btn-btn_action
-    let btn_sale: HTMLButtonElement = document.getElementById("btn-sale");
+
+    const btn_sale: HTMLButtonElement = document.getElementById("btn-sale") as HTMLButtonElement;
     btn_sale?.addEventListener("click", (e: Event) => {
-      
+
       if (this.cartService.getCart().length <= 0) {
+
         alert("Sepet boş Ürün Ekleyin!!!");
         return;
+
       }
+
       const result: boolean = confirm("Satış yapılsın mı");
       if (result) {
+
         this.cartService.saleCart();
         Router.render("home");
-      } else {
 
       }
+
     });
-    
-    let btn_order: HTMLButtonElement = document.getElementById("btn-order");
+
+    const btn_order: HTMLButtonElement = document.getElementById("btn-order") as HTMLButtonElement;
     btn_order?.addEventListener("click", (e: Event) => {
+
       if (this.cartService.getCart().length <= 0) {
+
         alert("Sepet boş Ürün Ekleyin!!!");
         return;
+
       }
 
       const result: boolean = confirm("Sipariş verilsin mi");
       if (result) {
+
         const loggedUser: User = this.userService.getLoggedUser();
+
         const cartItemList: Array<CartItem> = this.cartService.getCart();
         cartItemList.map(crtItem => {
           this.orderService.addProductToOrder(loggedUser, crtItem.product, crtItem.amount);
         });
         this.cartService.clearCart();
+        
         Router.render("home");
-      } else {
-
-      }
-
-      console.log(this.orderService.getAllOrder());
+      } 
+      
     });
 
   };
@@ -137,37 +159,3 @@ const btn_cart_product_removesList = document.getElementsByName("btn-cart-produc
     `;
   }
 }
-
-/*
-
- <div id="cart" class="text-center box-shadow">
-            <h3>Sepetim</h3>
-            <hr>
-            <ul id="cart-product-list" class="list-style-none">
-                <li class="cart-list-item border">
-                    <i class="fas fa-carrot" style="font-size: 100px;"></i>
-                    <span>Elma</span>
-                    <br>
-                    <span>10TL X </span>
-                    <input type="number" id="quantity" name="quantity" style="width:2rem" min="1" max="500" value="1">
-                    <span>Tutar:10 tl</span>
-                </li>
-                <li class="cart-list-item border">
-                    <i class="fas fa-carrot" style="font-size: 100px;"></i>
-                    <span>Elma</span>
-                    <br>
-                    <span>10TL X </span>
-                    <input type="number" id="quantity" name="quantity" style="width:2rem" min="1" max="500" value="1">
-                    <span>Tutar:10 tl</span>
-                </li>
-
-            </ul>
-            <hr>
-            <div>
-                <span>1 adet ürün</span>
-                <span>Toplam Tutar: 10--TL</span>
-            </div>
-            <hr>
-            <button class="btn btn-block btn-danger">Satış Yap</button>
-        </div>
- */

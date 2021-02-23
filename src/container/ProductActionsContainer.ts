@@ -6,61 +6,65 @@ import { ProductService } from "../Services/ProductService";
 import { UserService } from "../Services/UserService";
 
 export class ProductActionsContainer implements IPage {
+
   productService: ProductService;
+
   constructor(prdService: ProductService) {
+
     this.productService = prdService;
+
   }
 
-  isRequiredAuth: boolean;
   mount(): void {
-    let txt: HTMLInputElement = document.getElementById("txt");
-    txt?.addEventListener("change", (e: Event) => {
-      console.log(e.target.value);
-    });
 
-    let btn_new_product: HTMLButtonElement = document.getElementById("btn_new_product");
+    const btn_new_product: HTMLButtonElement = document.getElementById("btn_new_product") as HTMLButtonElement;
     btn_new_product?.addEventListener("click", (e: Event) => {
 
+      const input_modal_product_new_name: HTMLInputElement = document.getElementById("modal_product_new_name") as HTMLInputElement;
+      const input_modal_product_new_price: HTMLInputElement = document.getElementById("modal_product_new_price") as HTMLInputElement;
+      const input_modal_product_new_amount: HTMLInputElement = document.getElementById("modal_product_new_amount") as HTMLInputElement;
 
-      const input_modal_product_new_name: HTMLInputElement = document.getElementById("modal_product_new_name");
-      const input_modal_product_new_price: HTMLInputElement = document.getElementById("modal_product_new_price");
-      const input_modal_product_new_amount: HTMLInputElement = document.getElementById("modal_product_new_amount");
       const name: string = input_modal_product_new_name.value;
       const price: number = Number(input_modal_product_new_price.value);
       const amount: number = Number(input_modal_product_new_amount.value);
 
-      const prd: Product = {
+      const newPrd: Product = {
         id: 0,
         name,
         price, amount
       };
-      this.productService.createProduct(prd);
-      console.log(this.productService.getAllProduct());
+
+      this.productService.createProduct(newPrd);
+
       document.getElementById('modal_new').style.display = 'none';
+
       Router.render("producteditlist");
 
     });
 
-    let btn_update_product: HTMLButtonElement = document.getElementById("btn_update_product");
+    const btn_update_product: HTMLButtonElement = document.getElementById("btn_update_product") as HTMLButtonElement;
     btn_update_product?.addEventListener("click", (e: Event) => {
-      const id: number = Number(e.target.getAttribute("productID"));
+
+      const id: number = Number((e.target as HTMLButtonElement).getAttribute("productID"));
       const product: Product = this.productService.getProductById(id);
 
-      const input_modal_product_update_name: HTMLInputElement = document.getElementById("modal_product_update_name");
-      const input_modal_product_update_price: HTMLInputElement = document.getElementById("modal_product_update_price");
-      const input_modal_product_update_amount: HTMLInputElement = document.getElementById("modal_product_update_amount");
+      const input_modal_product_update_name: HTMLInputElement = document.getElementById("modal_product_update_name") as HTMLInputElement;
+      const input_modal_product_update_price: HTMLInputElement = document.getElementById("modal_product_update_price") as HTMLInputElement;
+      const input_modal_product_update_amount: HTMLInputElement = document.getElementById("modal_product_update_amount") as HTMLInputElement;
+
       product.name = input_modal_product_update_name.value
       product.price = Number(input_modal_product_update_price.value);
       product.amount = Number(input_modal_product_update_amount.value);
 
       this.productService.updateProduct(product);
       Router.render("producteditlist");
-    });
 
+    });
 
   };
 
   render(): string {
+
     let result: string = ``
 
     result =
@@ -73,7 +77,7 @@ export class ProductActionsContainer implements IPage {
                            
                 </ul>
 
-                            <!-- Modal that pops up when you click on "New Message" -->
+                <!-- Modal that pops up when you click on "New Message" -->
             <div id="modal_new" class="modal" style="z-index:4">
                 <div class="modal-content animate-zoom">
                     <div class="container padding">
@@ -125,5 +129,7 @@ export class ProductActionsContainer implements IPage {
 `;
 
     return result;
+
   }
+
 }
