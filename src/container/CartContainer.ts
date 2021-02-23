@@ -119,6 +119,7 @@ export class CartContainer implements IPage {
 
     const cartItems: Array<CartItem> = this.cartService.getCart();
     cartItems.map(item => {
+      //Test edildikten sonra kaldırılacak
      /* result += `<li class="cart-list-item border">
                     <i class="fas fa-carrot" style="font-size: 100px;"></i>
                     <span>${item.product.name}</span>
