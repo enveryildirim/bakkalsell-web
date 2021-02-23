@@ -5,7 +5,6 @@ import './css/mobile.css';
 
 import { UserType } from './src/models/UserType';
 import { UserRepository } from './src/repository/UserRepository';
-import { User } from './src/models/User';
 import { UserService } from './src/Services/UserService';
 import { ProductRepository } from './src/repository/ProductRepository';
 import { ProductService } from './src/Services/ProductService';
@@ -15,10 +14,7 @@ import { CartItem } from './src/models/CartItem';
 import { CartService } from './src/Services/CartService';
 import { OrderService } from './src/Services/OrderService';
 import { Router } from './src/routing/Router';
-import { Login } from './src/routing/Login';
-import { Home } from './src/routing/Home';
 import { IPage } from './src/routing/IPage';
-import { UserCreatePage } from './src/routing/UserCreatePage';
 import { HomePage } from './src/pages/HomePage';
 import { LoginContainer } from './src/container/LoginContainer';
 import { UserActionsContainer } from './src/container/UserActionsContainer';

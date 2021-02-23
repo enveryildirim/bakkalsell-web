@@ -24,7 +24,7 @@ export class ProductContainer implements IPage {
 
            if(amount<=0 || amount>1000){
              alert("1-1000 arası bir değer giriniz");
-             amountElement.value=1;
+             amountElement.value = 1;
              return;
            }
           

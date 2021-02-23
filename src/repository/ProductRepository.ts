@@ -13,11 +13,16 @@ export class ProductRepository implements IRepository<Product> {
   }
 
   update(product: Product): void {
-    const index = productList.findIndex(productItem => productItem.id == product.id);
+    const index = productList.findIndex(
+      productItem => productItem.id == product.id
+    );
     productList[index] = { ...product };
   }
+  
   deletee(product: Product): void {
-    const index = productList.findIndex(productItem => productItem.id == product.id);
+    const index = productList.findIndex(
+      productItem => productItem.id == product.id
+    );
     productList.splice(index, 1);
   }
   get(id: number): Product {
@@ -27,7 +32,7 @@ export class ProductRepository implements IRepository<Product> {
   getAll(): Array<Product> {
     return productList;
   }
-  getProductByName(name:string):Product{
+  getProductByName(name: string): Product {
     const result = productList.filter(productItem => productItem.name == name);
     return result.length > 0 ? result[0] : undefined;
   }

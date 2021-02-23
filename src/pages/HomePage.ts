@@ -5,7 +5,6 @@ import { IPage } from "../routing/IPage";
 import { Router } from "../routing/Router";
 
 export class HomePage implements IPage {
-  isRequiredAuth: boolean;
   mount(): void {}
 
   render(): string {
@@ -14,14 +13,12 @@ export class HomePage implements IPage {
     const cartContainer: IPage = Router.get("con_cart");
     const productContainer: IPage = Router.get("con_product");
 
-    const result: string =
-      `<div id="user-actions">`+
-      loginContainer.render() +
-      userActionsContainer.render() +
-     `</div>`+
-      productContainer.render() +
-      
-      cartContainer.render();
+    const result: string = `<div id="user-actions">
+        ${loginContainer.render()} 
+        ${userActionsContainer.render()} 
+      </div>
+        ${productContainer.render()} 
+        ${cartContainer.render()}`;
 
     return result;
   }

@@ -21,7 +21,7 @@ export class CartService {
     let sumAmount = cart ? cart.amount : 0;
     sumAmount = sumAmount + amount;
     if (sumAmount > product.amount) {
-      console.log("istenilen miktar kadar stok yok");
+      alert("istenilen miktar kadar stok yok");
       return;
     }
 
