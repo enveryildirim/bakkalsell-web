@@ -155,7 +155,7 @@ Router.insertPage(productActionContainer,"con_product_actions");
 
 //userService.login("adminadmin","adminadmin");
 
-Router.render("producteditlist");
+Router.render("home");
 //Router.insertPage(usrr);
 //userService.setPage(0);
 
