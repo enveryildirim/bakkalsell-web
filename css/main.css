@@ -73,11 +73,13 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
+    justify-content: center;
 }
 
 .product {
     margin: 0.5rem;
     padding: 0.5rem;
+    width: 30%;
 }
 
 /*Cart*/
