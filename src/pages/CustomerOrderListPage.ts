@@ -9,7 +9,7 @@ export class CustomerOrderListPage implements IPage {
     const loginContainer: IPage = Router.get("con_login");
     const userActionsContainer: IPage = Router.get("con_useractions");
 
-    const result: string = `<div id="user-actions">
+    const result: string = `<div id="user-actions" style="background-color: transparent;">
         ${loginContainer.render()} 
         ${userActionsContainer.render()}
       </div>

@@ -88,13 +88,13 @@ export class CustomerOrderContainer implements IPage {
     userOrder.cart.map(item => {
 
       result += `<li class="cart-list-item border">
-                    <i class="fas fa-carrot" style="font-size: 100px;"></i>
+                    <img src="https://cdn.jsdelivr.net/gh/enveryildirim/bakkalsell-web@learning-subjects/img/product.png" alt="" style="width: 100px;height: 100px;">
                     <span>${item.product.name}</span>
                     <br>
                     <span>${item.product.price} X </span>
                     <input type="number" id="quantity" name="input_quantity_customer" orderID=${userOrder.id} productID=${item.product.id} style="width:auto;text-align:center;" min="1" max="500" value="${item.amount}">
                     <span>Tutar:${item.amount * item.product.price} tl</span>
-                    <button type="button" name="btn_customer_order_remove_product" orderID=${userOrder.id} productID=${item.product.id} class="btn btn-danger">Kaldır</button>
+                    <button type="button" name="btn_customer_order_remove_product" orderID=${userOrder.id} productID=${item.product.id} class="btn btn-danger"><i class="fas fa-times"></i></button>
                    
                 </li>`;
 
