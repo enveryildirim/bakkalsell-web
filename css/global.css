@@ -1,15 +1,18 @@
 html{
     color: #000 !important;
-    background-color: #f1f1f1 !important;
+    background-color: #f5f7f8 !important;
     font-family: "Open Sans",sans-serif;
+}
+#app div{
+    background-color: #fff;
 }
 .text-center{
     text-align: center;
 }
 .container{
     margin: 0 auto;
-    /*background-color: chartreuse;*/
     max-width: 1400px;
+    padding: 0 5px;
 }
 
 .list-style-none{
@@ -28,9 +31,11 @@ html{
 
 /*Card*/
 .card{
+   
+}
+.card:hover{
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
 
 
 /*Forms and Iputs*/
@@ -70,10 +75,10 @@ html{
 
 .btn-default{
     color: #000;
+    background-color: transparent;
 }
 .btn-default:hover{
     color: #f44336;
-    background-color: #e8e8e8;
 }
 .btn-primary{
     color: #fff!important;
@@ -93,4 +98,10 @@ html{
 .btn-danger:hover{
     color: #000!important;
     background-color: #ccc!important;
+}
+
+.btn-link:hover{
+  background-color: transparent;
+  color:red;
+
 }

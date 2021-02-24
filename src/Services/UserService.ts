@@ -1,6 +1,5 @@
 import { User } from "../models/User";
 import { UserRepository } from "../repository/UserRepository";
-import { Router } from "../routing/Router";
 
 export class UserService {
   userRepository: UserRepository;
@@ -46,7 +45,8 @@ export class UserService {
     }
     const loggedUser = this.userRepository.login(username, password);
     this.userRepository.setLoggedUser(loggedUser);
-    if (loggedUser) {
+
+    if (loggedUser !== undefined) {
       return true;
     } else {
       return false;
@@ -63,7 +63,6 @@ export class UserService {
 
   isValid(user: User): boolean {
     let isValid: boolean = true;
-
     if (
       user.name === undefined ||
       user.username === undefined ||
@@ -82,10 +81,5 @@ export class UserService {
     }
 
     return isValid;
-  }
-
-  setPage(index:number){
-    
-  Router.render(index);
   }
 }

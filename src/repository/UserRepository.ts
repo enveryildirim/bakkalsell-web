@@ -16,14 +16,17 @@ export class UserRepository implements IRepository<User> {
     const index = userList.findIndex(userItem => userItem.id == user.id);
     userList[index] = { ...user };
   }
+
   deletee(user: User): void {
-    const index = userList.getAllOrdergetAllOrdergetAllOrdergetAllOrder(userItem => userItem.id == user.id);
+    const index = userList.findIndex(userItem => userItem.id == user.id);
     userList.splice(index, 1);
   }
+
   get(id: number): User {
     const result = userList.filter(userItem => userItem.id == id);
     return result.length > 0 ? result[0] : undefined;
   }
+
   getAll(): Array<User> {
     return userList;
   }
@@ -34,6 +37,7 @@ export class UserRepository implements IRepository<User> {
     );
     return user.length > 0 ? user[0] : undefined;
   }
+
   getLoggedUser(): User {
     return loggedUser;
   }
@@ -41,6 +45,4 @@ export class UserRepository implements IRepository<User> {
   setLoggedUser(user: User): void {
     loggedUser = user;
   }
-
-  
 }

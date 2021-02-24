@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 /*Modal*/
 .modal {
 
@@ -16,8 +15,7 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4)!important;;
 
 }
 .animate-zoom {
@@ -27,23 +25,24 @@
     margin: auto;
     background-color: #fff;
     position: relative;
-    padding: 2rem;
+    padding: 15px;
     outline: 0;
     width: 600px;
 }
 
 .modal_input {
     padding: 8px;
-    margin: 8px;
     display: block;
     width: 100%;
 }
+
+
 /*Header*/
 #header {
     width: 100%;
-    background-color:#000;
+    background-color: #000;
     color: #fff;
-    top:0;
+    top: 0;
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
     overflow: hidden;
 }
@@ -54,53 +53,47 @@
 }
 
 /*User Actions*/
-#user-actions{
-    flex-grow: 1;
+#user-actions {
+    flex: 2;
     margin-right: 0.5rem;
-   /* flex: 20%;*/
+    /* flex: 20%;*/
 }
 
 /*Login Form*/
-#login-form{
+#login-form {
     padding: 0.5rem;
 }
 
 /*Content*/
-#content{
+#content {
     /*background-color: blue;*/
-    flex-grow: 4;
-    /*flex: 20%;*/
+    /*flex-grow: 4;*/
+    flex: 6;
     margin-right: 0.5rem;
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
 }
 
-.product{
+.product {
     margin: 0.5rem;
     padding: 0.5rem;
+    width: 30%;
 }
 
 /*Cart*/
-#cart{
-    
-    flex-grow: 1;
-     padding: 0.5rem;
-   /* flex: 20%;*/
+#cart {
+
+    flex: 2;
+    padding: 0.5rem;
+    /* flex: 20%;*/
 
 }
-.cart-list-item{
+
+.cart-list-item {
     width: 100%;
-    
+
 }
 
-/*button*/
-.btn-link{
-  text-decoration: none;
-  border: none;
-  color:blue;
-}
-.btn-link:hover{
-  text-decoration: none;
-  border: none;
-  color:red;
-}
+/**/

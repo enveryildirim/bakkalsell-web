@@ -1,6 +1,4 @@
-export interface IPage{
-   isRequiredAuth:boolean;
-   render:()=>string;
-   mount:()=>void;
- 
+export interface IPage {
+  render: () => string;
+  mount: () => void;
 }

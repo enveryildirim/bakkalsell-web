@@ -1,5 +1,5 @@
-export enum UserType{
-    ADMIN,
-    EMPLOYEE,
-    CUSTOMER
+export enum UserType {
+  ADMIN,
+  EMPLOYEE,
+  CUSTOMER
 }

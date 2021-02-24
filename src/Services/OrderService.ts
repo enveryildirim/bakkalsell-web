@@ -16,29 +16,30 @@ export class OrderService {
     this.orderRepository = ordrRepository;
     this.productRepository = prdctRepository;
   }
-
+  //todo fonksiyon bölünecek.
   addProductToOrder(user: User, product: Product, amount: number): void {
-    const result = this.orderRepository.getByUserID(user.id);
+    const order = this.orderRepository.getByUserID(user.id);
 
-    if (result) {
+    if (order) {
       //sipariş var ürün eklenecek
-      const rslt = result.cart.filter(
+      const cartItem = order.cart.filter(
         cartItem => cartItem.product.id === product.id
       );
 
-      let sumAmount = rslt.length > 0 ? rslt[0].amount : 0;
+      let sumAmount = cartItem.length > 0 ? cartItem[0].amount : 0;
       sumAmount = sumAmount + amount;
+
       if (sumAmount > product.amount) {
         console.log("istenilen miktar kadar stok yok");
         return;
       }
 
-      if (rslt.length > 0) {
+      if (cartItem.length > 0) {
         //ürün güncelenecek
-        rslt[0].amount = rslt[0].amount + amount;
+        cartItem[0].amount = cartItem[0].amount + amount;
       } else {
         //yeni eklenecek ürün
-        result.cart.push({ product: product, amount: amount });
+        order.cart.push({ id: 0, product: product, amount: amount });
       }
     } else {
       if (amount > product.amount) {
@@ -46,9 +47,11 @@ export class OrderService {
         return;
       }
       const newOrder = {
+        id: 0,
         owner: user,
         name: "denemne",
-        cart: [{ product, amount }]
+        cart: [{ product, amount }],
+        isSold: false
       };
       this.orderRepository.create(newOrder);
     }
@@ -56,34 +59,28 @@ export class OrderService {
 
   updateOrderProductAmount(orderID: number, productID: number, amount: number) {
     const orders = this.orderRepository.get(orderID);
-    orders.cart.filter(item => item.product.id === productID)[0].amount = amount;
+    const cartItem = orders.cart.filter(
+      item => item.product.id === productID
+    )[0];
+    cartItem.amount = amount;
   }
 
-deleteOrder(orderID:number){
-  const order=this.orderRepository.get(orderID);
-  this.orderRepository.deletee(order);
-}
-  deleteProductFromOrder(id: number, crtItem: CartItem) {
-    //userid ile yapılabilir 
-    const orders = this.orderRepository.get(id);
-    const index = orders.cart.findIndex(
-      cartItem => cartItem.product.id === crtItem.product.id
-    );
-    orders.cart.splice(index, 1);
+  deleteOrder(orderID: number) {
+    const order = this.orderRepository.get(orderID);
+    this.orderRepository.deletee(order);
   }
 
-  deleteProductFromOrder2(id: number, productID: number) {
-
-    const orders = this.orderRepository.get(id);
-    const index = orders.cart.findIndex(
+  deleteProductFromOrder(id: number, productID: number) {
+    const order = this.orderRepository.get(id);
+    const index = order.cart.findIndex(
       cartItem => cartItem.product.id === productID
     );
-    orders.cart.splice(index, 1);
+    order.cart.splice(index, 1);
   }
 
   saleOrder(id: number): void {
-    const orders = this.orderRepository.get(id);
-    orders.cart.map(cartItem => {
+    const order = this.orderRepository.get(id);
+    order.cart.map(cartItem => {
       cartItem.product.amount = cartItem.product.amount - cartItem.amount;
       this.productRepository.update(cartItem.product);
     });

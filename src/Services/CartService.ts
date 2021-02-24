@@ -3,29 +3,33 @@ import { Product } from "../models/Product";
 import { CartRepository } from "../repository/CartRepository";
 import { ProductRepository } from "../repository/ProductRepository";
 
-
 export class CartService {
   cartRepository: CartRepository;
   productRepository: ProductRepository;
-  constructor(crtRepository: CartRepository,prdctRepository:ProductRepository) {
+
+  constructor(
+    crtRepository: CartRepository,
+    prdctRepository: ProductRepository
+  ) {
     this.cartRepository = crtRepository;
-    this.productRepository=prdctRepository;
+    this.productRepository = prdctRepository;
   }
 
   addProductToCart(product: Product, amount: number): void {
- 
-   const result = this.cartRepository.getCartItemByProductID(product.id);
-    let sumAmount = result ? result.amount : 0;
+    const cart = this.cartRepository.getCartItemByProductID(product.id);
+
+    let sumAmount = cart ? cart.amount : 0;
     sumAmount = sumAmount + amount;
     if (sumAmount > product.amount) {
-      console.log("istenilen miktar kadar stok yok");
+      alert("istenilen miktar kadar stok yok");
       return;
     }
-    if (result) {
-      result.amount = result.amount + amount;
-      this.cartRepository.update(result);
+
+    if (cart) {
+      cart.amount = cart.amount + amount;
+      this.cartRepository.update(cart);
     } else {
-      const newCartItem = { product: product, amount: amount };
+      const newCartItem = { id: 0, product: product, amount: amount };
       this.cartRepository.create(newCartItem);
     }
   }
@@ -34,28 +38,29 @@ export class CartService {
     this.cartRepository.deletee(cartItem);
   }
 
-  saleCart(){
-    const liste=this.getCart();
-    liste.map(cartItem=>{
-      cartItem.product.amount=cartItem.product.amount-cartItem.amount;
+  saleCart() {
+    const cartItemList = this.getCart();
+    cartItemList.map(cartItem => {
+      cartItem.product.amount = cartItem.product.amount - cartItem.amount;
       this.productRepository.update(cartItem.product);
     });
 
-   this.cartRepository.clearCart();
+    this.cartRepository.clearCart();
   }
+
   clearCart(): void {
     this.cartRepository.clearCart();
   }
-  updateCart(cartItem:CartItem):void{
+
+  updateCart(cartItem: CartItem): void {
     this.cartRepository.update(cartItem);
   }
-  getCartItemByID(id:number):CartItem{
+
+  getCartItemByID(id: number): CartItem {
     return this.cartRepository.get(id);
   }
 
   getCart(): Array<CartItem> {
     return this.cartRepository.getAll();
   }
-
-
 }

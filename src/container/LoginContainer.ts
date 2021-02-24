@@ -5,69 +5,69 @@ import { UserService } from "../Services/UserService";
 
 export class LoginContainer implements IPage {
 
-  userService:UserService;
-  constructor(usrService:UserService){
-    this.userService=usrService;
+  userService: UserService;
+
+  constructor(usrService: UserService) {
+
+    this.userService = usrService;
+
   }
-  isRequiredAuth: boolean;
-  isLogged: boolean = false;
+
   mount(): void {
-    let btn_login: HTMLButtonElement = document.getElementById("btn-login");
-    let btn_logout: HTMLButtonElement = document.getElementById("btn-logout");
-    
-    let txt_username: HTMLInputElement = document.getElementById("username");
-    let txt_password: HTMLInputElement = document.getElementById("password");
 
+    const btn_login: HTMLButtonElement = document.getElementById("btn-login") as HTMLButtonElement;
+    const btn_logout: HTMLButtonElement = document.getElementById("btn-logout") as HTMLButtonElement;
 
+    const txt_username: HTMLInputElement = document.getElementById("username") as HTMLInputElement;
+    const txt_password: HTMLInputElement = document.getElementById("password") as HTMLInputElement;
 
     btn_login?.addEventListener("click", (e: Event) => {
+
       e.preventDefault();
-      //login Db bağlanacak
-      const username:string=txt_username.value;
-      const password:string=txt_password.value;
-      const isLogged:boolean=this.userService.login(username,password);
-      if(isLogged){
+
+      const username: string = txt_username.value;
+      const password: string = txt_password.value;
+
+      const isLogged: boolean = this.userService.login(username, password);
+      if (isLogged) {
         Router.render("home");
-        //Router.render("customerorderlist");
-      }else{
+      } else {
         alert("Bilgiler yanlış");
       }
     });
 
-     btn_logout?.addEventListener("click", (e: Event) => {
+    btn_logout?.addEventListener("click", (e: Event) => {
+
       e.preventDefault();
-      //login Db bağlanacak
-        this.userService.logout();
-        alert("Çıkış Yapıldı");
-        Router.render("home");
-      
+
+      this.userService.logout();
+
+      alert("Çıkış Yapıldı");
+      Router.render("home");
+
     });
 
   }
 
-
   render(): string {
-    //db kontrol edilece
-   
-    const loggedUser:User=this.userService.getLoggedUser();
+
+    const loggedUser: User = this.userService.getLoggedUser();
     if (loggedUser) {
-      return`
-    <div id="user-info" class="border box-shadow text-center" style="margin-bottom: 10px;">
-      <h1>Kullanıcı Bilgileri</h1>
+      return `
+     <div id="user-info" class="border box-shadow text-center" style="margin-bottom: 10px;">
+      <h3>Kullanıcı Bilgileri</h3>
                 <i class="fas fa-user" style="font-size: 100px; width: 100%;"></i>
                 <p>Kullanıcı Adı: ${loggedUser.username}</p>
                 <p>Bilgiler: ${loggedUser.name}</p>
          <button id="btn-logout" class="btn btn-block btn-danger"> <i class="fas fa-sign-out-alt"></i> Çıkış
                         Yap</button>
-        </div>
-    
-      
-                      
+        </div>            
       `;
 
     } else {
+
       return ` 
-     <form id="login-form" class="border box-shadow"  style="text-align: center;">
+     <form id="login-form" class="border box-shadow"  style="text-align: center;height:100%;">
 
                 <div class="form-group">
                     <h3>Login Form</h3>
@@ -88,8 +88,9 @@ export class LoginContainer implements IPage {
                         Yap</button>
                 </div>
             </form>
-
     `;
     }
+
   }
+
 }
