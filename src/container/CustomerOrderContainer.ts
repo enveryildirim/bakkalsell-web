@@ -44,7 +44,6 @@ export class CustomerOrderContainer implements IPage {
     });
 
     //product remove buttons
-
     const buttons_remove = document.getElementsByName("btn_customer_order_remove_product");
     buttons_remove?.forEach(btnRemove => {
 
