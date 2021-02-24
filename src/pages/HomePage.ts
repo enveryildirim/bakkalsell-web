@@ -13,7 +13,7 @@ export class HomePage implements IPage {
     const cartContainer: IPage = Router.get("con_cart");
     const productContainer: IPage = Router.get("con_product");
 
-    const result: string = `<div id="user-actions">
+    const result: string = `<div id="user-actions" style="background-color: transparent;">
         ${loginContainer.render()} 
         ${userActionsContainer.render()} 
       </div>
